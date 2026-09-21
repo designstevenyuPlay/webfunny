@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'system-rounded';
+  src: local('Nunito'), local('Quicksand'), local('PingFang TC'), local('Microsoft JhengHei');
+}
+
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', 'Quicksand', 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', system-ui, sans-serif;
+  background: #FFF7F2;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+/* ---------- 可愛動畫 ---------- */
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50%      { transform: translateY(-7px) rotate(1deg); }
+}
+.creature-bob { animation: bob 3.2s ease-in-out infinite; transform-origin: 50% 80%; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: .25; transform: scale(.8); }
+  50%      { opacity: 1;   transform: scale(1.15); }
+}
+.creature-twinkle { animation: twinkle 1.8s ease-in-out infinite; transform-origin: center; }
+
+@keyframes pop-in {
+  0%   { opacity: 0; transform: scale(.6) translateY(24px); }
+  60%  { opacity: 1; transform: scale(1.06) translateY(-6px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.pop-in { animation: pop-in .6s cubic-bezier(.34,1.56,.64,1) both; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fade-up .5s ease both; }
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-6deg); }
+  75%      { transform: rotate(6deg); }
+}
+.wiggle { animation: wiggle .5s ease-in-out; }
+
+@keyframes float-up {
+  0%   { opacity: 0; transform: translateY(20px) scale(.6); }
+  25%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-140px) scale(1.1); }
+}
+.float-up { animation: float-up 2.4s ease-out forwards; }
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin-slow 2.4s linear infinite; }
+
+@keyframes bg-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(18px, -22px); }
+}
+.bg-drift { animation: bg-drift 9s ease-in-out infinite; }
+
+/* 按鈕按下的軟軟手感 */
+.squish { transition: transform .16s cubic-bezier(.34,1.56,.64,1), box-shadow .16s ease; }
+.squish:active { transform: scale(.93); }
+
+/* 隱藏捲軸但可捲動 */
+.no-bar::-webkit-scrollbar { display: none; }
+.no-bar { scrollbar-width: none; }
